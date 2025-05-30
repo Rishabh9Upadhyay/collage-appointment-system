@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+
+<body>
+    <div class="container1">
+        {{>nav}}
+        {{!-- <img src="./img/home.webp" alt="" style="width: 99vw;"> --}}
+        <div style="position: relative; display: inline-block;">
+            <img src="./img/home.webp" alt="Image" style="width: 99vw; height: auto;">
+            <div style="
+                position: absolute;
+                top: 20px;
+                left: 450px;
+                color: white;
+                background-color: rgba(0, 0, 0, 0.5);
+                padding: 5px;
+                font-size: 50px;
+                ">
+                Collage Appointment System
+                {{#if mess}}
+                <h1 id="Rishabh">Your Appointment hasbeen scheduled</h1>
+                {{/if}}
+            </div>
+        </div>
+        
+
+
+        {{>footer}}
+    </div>
+    <script>
+        setTimeout(() => {
+            const Rishabh = document.getElementById("Rishabh");
+            Rishabh.style.display = "none";
+        }, 3000)
+    </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+    crossorigin="anonymous"></script>
+
+</html>
