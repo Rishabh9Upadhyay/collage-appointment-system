@@ -23,3 +23,6 @@
 7.	Student A2 books an appointment with Professor P1 for time T2.
 8.	Professor P1 cancels the appointment with Student A1.
 9.	Student A1 checks their appointments and realizes they do not have any pending appointments.
+
+
+# Some important screen shots in git repo are added
