@@ -95,28 +95,60 @@ app.get('/bookapp', auth, async (req, res)=>{
     })
 })
 
-app.post("/bookapp", async (req,res)=>{
-    if(req.session.name){
-        try{
-            const obj1 = new Appointment({
-                StudentName: req.body.StudentName,
-                TeacherName: req.body.TeacherName,
-                Day: req.body.Day,
-                Time: req.body.Time
-            })
+
+
+
+// app.post("/bookapp", async (req,res)=>{
+//     if(req.session.name){
+//         try{
+//             const obj1 = new Appointment({
+//                 StudentName: req.body.StudentName,
+//                 TeacherName: req.body.TeacherName,
+//                 Day: req.body.Day,
+//                 Time: req.body.Time
+//             })
+//             await obj1.save();
+//             res.render("index",{mess: true})
+//         }
+//         catch(e){
+//             res.statusCode(500)
+//             res.send("Internal Servar Error")
+//             console.log("Internal Servar Error")
+//         }
+//     }
+//     else{
+//         res.render("login",{mess1: true})
+//     }
+// })
+
+
+
+app.post("/bookapp", async (req, res) => {
+    try {
+        const obj1 = new Appointment({
+            StudentName: req.body.StudentName,
+            TeacherName: req.body.TeacherName,
+            Day: req.body.Day,
+            Time: req.body.Time
+        });
+
+        const teacher = await Teacher.findOne({ Name: obj1.TeacherName });
+
+        if (teacher) {
             await obj1.save();
-            res.render("index",{mess: true})
+            res.render("index", { mess: true });
+        } else {
+            res.status(400).send("Bad Request: Teacher not found");
         }
-        catch(e){
-            res.statusCode(500)
-            res.send("Internal Servar Error")
-            console.log("Internal Servar Error")
-        }
+    } catch (e) {
+        console.log("Internal Server Error", e);
+        res.status(500).send("Internal Server Error");
     }
-    else{
-        res.render("login",{mess1: true})
-    }
-})
+});
+
+
+
+
 
 
 app.post('/register1', async (req, res) => {
